@@ -1,0 +1,13 @@
+class Solution(object):
+    def containsDuplicate(self, nums):
+        '''
+        make a set to store the numbers, go through the array if the number is in the set then return True otherwise add the number in the set. if the number is not in the set and your done with the array then return False
+        '''
+        seen = set()
+
+        for num in nums:
+            if num in seen:
+                return True
+            seen.add(num)
+
+        return False
