@@ -1,0 +1,17 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        '''
+        Make two hashmaps to check add the frequnecy of the characters, then check if both hashmaps are the same amount of characters. The get() function basically allows to add itself but if it not in the hashmap yet then it has a default value of 0
+        '''
+        if len(s) != len(t):
+            return False
+        countS={}
+        countT={}
+
+        for i in range(len(s)):
+            countS[s[i]] = 1 + countS.get(s[i],0)
+            countT[t[i]] = 1 + countT.get(t[i],0)
+        for c in countS:
+            if countS[c] != countT.get(c,0):
+                return False
+        return True
