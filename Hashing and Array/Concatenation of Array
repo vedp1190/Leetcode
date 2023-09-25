@@ -1,0 +1,7 @@
+class Solution:
+    def getConcatenation(self, nums: List[int]) -> List[int]:
+        num2=[]
+
+        num2= nums+nums
+
+        return num2
