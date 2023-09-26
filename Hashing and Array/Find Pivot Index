@@ -1,0 +1,17 @@
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+        '''
+        The rightsum is the totalsum - leftsum - nums[i]. If the left and right are the same then the i is the pivot. If there is no pivot then return -1.
+        '''
+        totalsum = sum(nums)
+
+        leftsum =0
+
+        for i in range(len(nums)):
+            rightSum = totalsum - nums[i] - leftsum
+
+            if leftsum == rightSum:
+                return i
+            else:
+                leftsum += nums[i]
+        return -1
