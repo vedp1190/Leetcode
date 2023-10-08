@@ -1,0 +1,11 @@
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+
+        square=[]
+
+        for i in range(len(nums)):
+            squared = pow(nums[i],2)
+            square.append(squared)
+        square.sort()
+
+        return square
