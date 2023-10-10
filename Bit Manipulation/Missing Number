@@ -1,0 +1,10 @@
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        '''
+        This formula easily helps you solve it. You are basically using the XOR formula to solve this and find the missing number. It is the computation of the expected value at index i - the actual value at index i.
+        '''
+        res = len(nums)
+
+        for i in range(len(nums)):
+            res += i - nums[i]
+        return res
