@@ -1,0 +1,12 @@
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        '''
+        Use two pointers, once fast reaches the end of list the slow one will reach the middle so you just need to return the slow one.
+        '''
+        slow = head
+        fast = head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
