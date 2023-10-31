@@ -1,0 +1,18 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        '''
+        have to implement a stack. First if the closed part is the first char then it is false, if the closed part equals the top of the stack element then you pop it. Then make sure the stack is empty, if it is empty then it is true otherwise it's false.
+        '''
+        stack=[]
+        closedtoOpen={"}":"{", "]":"[", ")":"("}
+
+        for c in s:
+            if c in closedtoOpen:
+                if stack and stack[-1] == closedtoOpen[c]:
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(c)
+        return True if not stack else False
+        
