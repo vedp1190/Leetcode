@@ -1,0 +1,21 @@
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+
+        Rotate the whole array first, then the K section and then the remaining section
+        """
+
+        k = k % len(nums)
+
+        def soln(arr, l, r):
+            while l<r:
+                arr[l],arr[r] = arr[r], arr[l]
+                l+=1
+                r-=1
+            return arr
+        
+        if(k>0):
+            soln(nums, 0, len(nums)-1) # rotate the whole array
+            soln(nums, 0, k-1) # rotate the K section of the array
+            soln(nums, k, len(nums)-1) # rotate the remaining section
