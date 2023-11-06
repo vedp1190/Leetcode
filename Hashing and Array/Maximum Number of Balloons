@@ -1,0 +1,13 @@
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        '''
+        Use the counter to count the chars in the text and also count the chars in the word, "balloon". Use integer divison to find your answer
+        '''
+
+        charText = Counter(text)
+        balloon = Counter("balloon")
+
+        res = float('inf')
+        for char in balloon:
+            res = min(res, charText[char]//balloon[char])
+        return res
