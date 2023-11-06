@@ -1,0 +1,17 @@
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+
+        '''
+        Go through the dictionary. If count[n] is greater than the result is the key, and now maxCount is the updated value.
+        '''
+        count = {}
+
+        res = 0
+        maxCount = 0
+
+        for n in nums:
+            count[n] = 1 +count.get(n,0)
+            if count[n] > maxCount:
+                res= n
+                maxCount = count[n]
+        return res
