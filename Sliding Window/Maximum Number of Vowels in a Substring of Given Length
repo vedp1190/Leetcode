@@ -1,0 +1,19 @@
+class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+        '''
+        Make a hash set with the vowels and make sure s[r] and s[l] are in it. And according to that when changing the size of the sliding window increase or decrease the cnt
+        '''
+        vowel = {"a", "e", "i", "o", "u"}
+
+        l,cnt,res = 0,0,0
+
+        for r in range(len(s)):
+
+            cnt+=1 if s[r] in vowel else 0
+
+            if r-l+1>k:
+                cnt-=1 if s[l] in vowel else 0
+                l+=1
+            res = max(res,cnt)
+        return res
+        
