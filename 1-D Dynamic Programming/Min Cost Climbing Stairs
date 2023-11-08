@@ -1,0 +1,13 @@
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        '''
+        len(nums)-3, because lets say our array is [10,15,20] + [0] so [10,15,20,0],
+        we dont care about the 0 and the 20 cause we dont update those values anyways, and len(nums)-1 will give us 0 and len(nums)-2 will give us 20.
+
+        '''
+        cost.append(0)
+        for i in range(len(cost)-3, -1,-1):
+            cost[i] += min(cost[i+1],cost[i+2])
+
+        return min(cost[0],cost[1])
+        
