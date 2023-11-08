@@ -1,0 +1,12 @@
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        '''
+        You loop through n-1 times because you alr set the first two values to 1, and need to figure out the remaining n-2 steps
+        '''
+        one, two = 1,1
+
+        for i in range(n-1):
+            temp = one
+            one = one +two
+            two = temp
+        return one
