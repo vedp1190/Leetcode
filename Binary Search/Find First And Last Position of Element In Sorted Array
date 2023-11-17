@@ -1,0 +1,25 @@
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        left = self.binSearch(nums,target,True)
+        right = self.binSearch(nums,target,False)
+
+        return[left,right]
+    #If leftBias = True then we need to find left most target value, else it will be right bias and we need to find right most target val
+    def binSearch(self, nums, target, leftBias):
+        r,l = len(nums)-1, 0
+        i = -1
+
+        while l<=r:
+            m = l +((r-l)//2)
+
+            if target > nums[m]:
+                l = m+1
+            elif target< nums[m]:
+                r = m-1
+            else:
+                i=m
+                if leftBias:
+                    r=m-1
+                else:
+                    l=m+1 #rightBias case
+        return i
