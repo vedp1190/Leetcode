@@ -1,0 +1,17 @@
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        '''
+        Sort the array of lists and then add the first list to the output list and compare the start and end of each value to that. O(nlogn)
+        '''
+        intervals.sort(key = lambda i: i[0])
+        output = [intervals[0]]
+
+        # Iterating through the 1st index and onwards
+        for start,end in intervals[1:]:
+            lastInputted = output[-1][1] #the last item that was inputted in and the [1] access the second element so 3 in the first case
+            if start <=lastInputted:
+                output[-1][1] = max(lastInputted,end)
+            else:
+                output.append([start,end])
+        return output
+            
