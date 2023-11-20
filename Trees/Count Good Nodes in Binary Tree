@@ -1,0 +1,22 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    '''
+    Doing DFS, since root is always Good Node we will compare the left and right val to it. If it is >= maxVal that is the new maxVal. We call this dfs function recurisively
+    '''
+    def goodNodes(self, root: TreeNode) -> int:
+        def dfs(node, maxVal):
+            if not node:
+                return 0
+
+            res = 1 if node.val >= maxVal else 0
+            maxVal = max(maxVal, node.val)
+            res += dfs(node.left, maxVal)
+            res += dfs(node.right, maxVal)
+            return res
+
+        return dfs(root, root.val)
