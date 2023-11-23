@@ -1,0 +1,15 @@
+class Solution:
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        '''
+        First make pairs of [position,time] and then traverse in reversed sorted array. Do the calculation in how long it will take to reach target (target-position/speed), and append it to the stack, if latest item reaches faster pop it and this will be considered a fleet because of the ONE LANE ROAD.
+        '''
+        pair = [[p,s] for p,s in zip(position,speed)]
+
+        stack = []
+        #iterating in reverse sorted array
+        for p,s in sorted(pair)[::-1]:
+            stack.append((target-p)/s)
+            if len(stack) >=2 and stack[-1] <= stack[-2]:
+                stack.pop()
+        return len(stack)
+          
