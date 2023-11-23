@@ -1,0 +1,19 @@
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        '''
+        Use a Stack and check if the character is "." or "..", if ".." pop the latest element from the stack if it's "." then add to the stack
+        '''
+        stack = []
+        cur=""
+
+        for c in path + '/':
+            if c == '/':
+                if cur == "..":
+                    if stack: stack.pop()#checking if stack is not empty 
+                elif cur != "" and cur !=".":
+                    stack.append(cur)
+                cur = "" #empty the cur after these operations happen
+
+            else:
+                cur += c
+        return "/" +"/".join(stack)
