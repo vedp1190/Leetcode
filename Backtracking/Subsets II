@@ -1,0 +1,22 @@
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        nums.sort()
+        def backtrack(i,subset):
+            #base case
+            if i==len(nums):
+                res.append(subset[:]) #appending a copy of the current subset
+                return
+            #include nums[i] in subset
+            subset.append(nums[i])
+            backtrack(i+1,subset) #recursively call it for next iteration
+            
+
+            #Moving past the duplicate value in nums
+            while i+1 < len(nums) and nums[i] ==nums[i+1]:
+                i+=1
+            #NOT include nums[i] in subset
+            subset.pop() #Also want to remove the current value, to go to the other decision tree side 
+            backtrack(i+1,subset)
+        backtrack(0,[])
+        return res
