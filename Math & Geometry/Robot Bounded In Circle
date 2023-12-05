@@ -1,0 +1,19 @@
+class Solution:
+    def isRobotBounded(self, instructions: str) -> bool:
+        dirX, dirY = 0,1
+        x,y = 0,0
+
+        for direction in instructions:
+            if direction == "G":
+                x,y = x+dirX, y+dirY
+
+            elif direction == "L":
+                #Turn for left direction
+                dirX,dirY = -1*dirY,dirX 
+
+            else:
+                #Turn for right directions
+                dirX,dirY = dirY, -1*dirX
+
+        # The answer is true if the (x,y) == (0,0) and/or if the direction changes  
+        return (x,y) == (0,0) or (dirX,dirY) != (0,1)
