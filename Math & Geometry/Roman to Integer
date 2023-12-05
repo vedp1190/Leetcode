@@ -1,0 +1,17 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        '''
+        Make a hashmap with all the values
+        If the next value is bigger then you Minus the current value off result
+        Else just add the current value to result
+        '''
+        roman = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+        res = 0
+
+        for char in range(len(s)):
+            if char+1<len(s) and roman[s[char]]< roman[s[char+1]]:
+                res -= roman[s[char]]
+            else:
+                res+=roman[s[char]]
+
+        return res
