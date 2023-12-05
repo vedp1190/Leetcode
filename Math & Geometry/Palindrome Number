@@ -1,0 +1,14 @@
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        
+        if x < 0:
+            return False
+        num = str(x)
+        i = 0
+        j = len(num)-1
+
+        for i in range(len(num)):
+            if num[i] != num[j]:
+                return False
+            j -=1
+        return True
