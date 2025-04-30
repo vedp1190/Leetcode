@@ -1,2 +1,2 @@
 # Leetcode
-This is a folder that contains all of my Leetcode Solutions. The solutions are separated by problem types.
+This is a folder that contains all of my Leetcode Solutions/Design Technial Question. The solutions are separated by problem types.
